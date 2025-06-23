@@ -8,6 +8,7 @@ import ClientList from '@/components/Clients/ClientList';
 import ReportsView from '@/components/Reports/ReportsView';
 
 const Index = () => {
+  console.log('Index component rendering...');
   const [activeSection, setActiveSection] = useState('dashboard');
 
   const renderContent = () => {
@@ -36,6 +37,7 @@ const Index = () => {
 
   return (
     <div className="flex h-screen bg-gray-50">
+      <div className="text-red-500 p-4">DEBUG: Index component loaded successfully!</div>
       <Sidebar activeSection={activeSection} onSectionChange={setActiveSection} />
       <main className="flex-1 overflow-auto">
         <div className="p-8">
