@@ -1,12 +1,21 @@
-
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import path from "path";
+import { componentTagger } from "lovable-tagger";
 
-// 👇 Replace 'your-repo-name' with your actual GitHub repo name
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   base: '/quickly/',
   server: {
-    port: 8080
+    host: "::",
+    port: 8080,
   },
-  plugins: [react()]
-});
+  plugins: [
+    react(),
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
+}));
